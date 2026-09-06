@@ -259,6 +259,8 @@
       ".cm-scroller": {
         fontFamily: '"IBM Plex Mono", ui-monospace, monospace',
         lineHeight: "1.72",
+        overflow: "auto",
+        overscrollBehavior: "contain",
       },
       ".cm-content": {
         minHeight: "100%",
@@ -286,6 +288,163 @@
         backgroundColor: "#20282a",
         border: "none",
         color: "#a7b3af",
+      },
+      ".cm-panels": {
+        color: "#c7d1ce",
+        backgroundColor: "#11171a",
+        fontFamily: '"IBM Plex Mono", ui-monospace, monospace',
+      },
+      ".cm-panels-top": {
+        borderBottom: "1px solid #3a4744",
+      },
+      ".cm-panel.cm-search": {
+        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: "8px",
+        padding: "12px 48px 12px 12px",
+        backgroundColor: "#11171a",
+        boxShadow: "inset 3px 0 0 #f1b85b",
+      },
+      ".cm-panel.cm-search br": {
+        display: "block",
+        flexBasis: "100%",
+        width: "0",
+        height: "0",
+        margin: "0",
+      },
+      ".cm-panel.cm-search input, .cm-panel.cm-search button, .cm-panel.cm-search label": {
+        margin: "0",
+      },
+      ".cm-panel.cm-search .cm-textfield": {
+        flex: "1 1 190px",
+        minWidth: "130px",
+        height: "36px",
+        padding: "0 11px",
+        color: "#e7edeb",
+        border: "1px solid #3a4744",
+        borderRadius: "3px",
+        outline: "none",
+        backgroundColor: "#0a0e10",
+        fontFamily: '"IBM Plex Mono", ui-monospace, monospace',
+        fontSize: "11px",
+        boxShadow: "inset 0 1px 0 #ffffff08",
+      },
+      ".cm-panel.cm-search .cm-textfield::placeholder": {
+        color: "#7a8782",
+      },
+      ".cm-panel.cm-search .cm-textfield:hover": {
+        borderColor: "#52605d",
+      },
+      ".cm-panel.cm-search .cm-textfield:focus": {
+        borderColor: "#f1b85b",
+        boxShadow: "0 0 0 2px #f1b85b24",
+      },
+      ".cm-panel.cm-search .cm-button": {
+        minHeight: "34px",
+        padding: "0 10px",
+        color: "#b8c3c0",
+        border: "1px solid #35403e",
+        borderRadius: "3px",
+        backgroundColor: "#171e21",
+        backgroundImage: "none",
+        fontFamily: '"IBM Plex Mono", ui-monospace, monospace',
+        fontSize: "9px",
+        fontWeight: "500",
+        lineHeight: "1",
+        textTransform: "uppercase",
+        boxShadow: "none",
+        cursor: "pointer",
+      },
+      ".cm-panel.cm-search .cm-button:hover": {
+        color: "#ffca75",
+        borderColor: "#5b6965",
+        backgroundColor: "#1d2629",
+      },
+      ".cm-panel.cm-search .cm-button:focus-visible": {
+        outline: "2px solid #f1b85b",
+        outlineOffset: "2px",
+      },
+      ".cm-panel.cm-search [name=replace], .cm-panel.cm-search [name=replaceAll]": {
+        color: "#86dec8",
+        borderColor: "#31554d",
+        backgroundColor: "#13231f",
+      },
+      ".cm-panel.cm-search [name=replace]:hover, .cm-panel.cm-search [name=replaceAll]:hover": {
+        color: "#a3f0dd",
+        borderColor: "#477a6e",
+        backgroundColor: "#193029",
+      },
+      ".cm-panel.cm-search label": {
+        display: "inline-flex",
+        alignItems: "center",
+        minHeight: "32px",
+        gap: "6px",
+        padding: "0 3px",
+        color: "#9ba8a4",
+        fontSize: "9px",
+        lineHeight: "1.2",
+        whiteSpace: "nowrap",
+        cursor: "pointer",
+      },
+      ".cm-panel.cm-search label:hover": {
+        color: "#d5ddda",
+      },
+      ".cm-panel.cm-search input[type=checkbox]": {
+        appearance: "none",
+        width: "14px",
+        height: "14px",
+        flex: "0 0 auto",
+        border: "1px solid #56635f",
+        borderRadius: "2px",
+        backgroundColor: "#0a0e10",
+        cursor: "pointer",
+      },
+      ".cm-panel.cm-search input[type=checkbox]:checked": {
+        borderColor: "#65d5b9",
+        backgroundColor: "#65d5b9",
+        boxShadow: "inset 0 0 0 3px #11171a",
+      },
+      ".cm-panel.cm-search input[type=checkbox]:focus-visible": {
+        outline: "2px solid #f1b85b",
+        outlineOffset: "2px",
+      },
+      ".cm-panel.cm-search [name=close]": {
+        position: "absolute",
+        top: "12px",
+        right: "10px",
+        display: "grid",
+        width: "28px",
+        height: "28px",
+        margin: "0",
+        padding: "0",
+        color: "#83908c",
+        border: "1px solid transparent",
+        borderRadius: "3px",
+        backgroundColor: "transparent",
+        fontFamily: '"IBM Plex Mono", ui-monospace, monospace',
+        fontSize: "17px",
+        lineHeight: "1",
+        cursor: "pointer",
+        placeItems: "center",
+      },
+      ".cm-panel.cm-search [name=close]:hover": {
+        color: "#ff8a84",
+        borderColor: "#613c3a",
+        backgroundColor: "#261716",
+      },
+      ".cm-panel.cm-search [name=close]:focus-visible": {
+        outline: "2px solid #f1b85b",
+        outlineOffset: "2px",
+      },
+      ".cm-searchMatch": {
+        backgroundColor: "#f1b85b35",
+        outline: "1px solid #f1b85b73",
+      },
+      ".cm-searchMatch.cm-searchMatch-selected": {
+        backgroundColor: "#65d5b963",
+        outline: "1px solid #65d5b9",
       },
       ".cm-tooltip": {
         backgroundColor: "#171d20",
@@ -334,7 +493,23 @@
     }, 2800);
   }
 
-  const sharedExtensions = [basicSetup, oneDark, editorTheme];
+  const spanishPhrases = EditorState.phrases.of({
+    Find: "Buscar",
+    Replace: "Reemplazar",
+    next: "Siguiente",
+    previous: "Anterior",
+    all: "Todas",
+    "match case": "Mayúsculas",
+    regexp: "Regex",
+    "by word": "Palabra exacta",
+    replace: "Reemplazar",
+    "replace all": "Reemplazar todas",
+    close: "Cerrar",
+    "current match": "Coincidencia actual",
+    "on line": "en la línea",
+  });
+
+  const sharedExtensions = [basicSetup, oneDark, spanishPhrases, editorTheme];
 
   const portableJsonLinter = linter(
     (view) => {

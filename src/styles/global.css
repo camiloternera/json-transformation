@@ -403,12 +403,15 @@ main {
 .workbench__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 134px minmax(0, 1.15fr);
-  min-height: 565px;
+  height: clamp(565px, 68vh, 720px);
+  min-height: 0;
 }
 
 .editor-panel {
   display: grid;
   min-width: 0;
+  min-height: 0;
+  overflow: hidden;
   grid-template-rows: auto minmax(0, 1fr) auto;
   background: var(--ink-1);
 }
@@ -534,7 +537,7 @@ main {
 
 .editor-panel__surface {
   min-width: 0;
-  min-height: 400px;
+  min-height: 0;
   overflow: hidden;
   background: #0d1114;
 }
@@ -545,6 +548,38 @@ main {
 
 .editor-panel__surface .cm-editor {
   height: 100%;
+  min-height: 0;
+}
+
+.editor-panel__surface .cm-scroller {
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: #46534f #0b0f11;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.editor-panel__surface .cm-scroller::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.editor-panel__surface .cm-scroller::-webkit-scrollbar-track {
+  background: #0b0f11;
+}
+
+.editor-panel__surface .cm-scroller::-webkit-scrollbar-thumb {
+  border: 2px solid #0b0f11;
+  border-radius: 999px;
+  background: #46534f;
+}
+
+.editor-panel__surface .cm-scroller::-webkit-scrollbar-thumb:hover {
+  background: #60706b;
+}
+
+.editor-panel__surface .cm-scroller::-webkit-scrollbar-corner {
+  background: #0b0f11;
 }
 
 .editor-panel__footer {
@@ -997,10 +1032,12 @@ main {
 
   .workbench__grid {
     grid-template-columns: 1fr;
+    height: auto;
   }
 
   .editor-panel__surface {
-    min-height: 340px;
+    height: clamp(340px, 56vh, 520px);
+    min-height: 0;
   }
 
   .transfer {
@@ -1103,11 +1140,32 @@ main {
   }
 
   .editor-panel__surface {
-    min-height: 310px;
+    height: clamp(300px, 52vh, 420px);
+    min-height: 0;
   }
 
   .editor-panel__surface .cm-line {
     padding-right: 12px;
+  }
+
+  .editor-panel__surface .cm-editor .cm-panel.cm-search {
+    gap: 7px;
+    padding: 10px 42px 10px 10px;
+  }
+
+  .editor-panel__surface .cm-editor .cm-panel.cm-search .cm-textfield {
+    width: auto;
+    min-width: 130px;
+    flex: 1 1 130px;
+  }
+
+  .editor-panel__surface .cm-editor .cm-panel.cm-search .cm-button {
+    flex: 0 0 auto;
+    padding-inline: 6px;
+  }
+
+  .editor-panel__surface .cm-editor .cm-panel.cm-search label {
+    min-height: 28px;
   }
 
   .editor-panel__footer {
