@@ -1,0 +1,102 @@
+---
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "../styles/global.css";
+
+import JsonWorkbench from "../components/JsonWorkbench.astro";
+
+const title = "JSON Forge · Convertidor, formateador y validador JSON";
+const description =
+  "Convierte strings a JSON, embellece, valida, edita, compacta y serializa tus datos directamente en el navegador.";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0d0f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page-grid" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="JSON Forge, inicio">
+        <span class="brand__mark" aria-hidden="true"><i>{`{`}</i><b>/</b><i>{`}`}</i></span>
+        <span class="brand__name">JSON<span>//</span>FORGE</span>
+      </a>
+
+      <div class="local-badge">
+        <span class="local-badge__pulse" aria-hidden="true"></span>
+        <span>Local only</span>
+        <span class="local-badge__code">AES-00</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__title-block">
+          <p class="kicker"><span>UTILIDAD / 01</span> TRANSFORMACIÓN JSON</p>
+          <h1 id="page-title">
+            De string a estructura.<br />
+            <em>Y de vuelta.</em>
+          </h1>
+        </div>
+
+        <div class="hero__summary">
+          <span class="hero__rule" aria-hidden="true"></span>
+          <p>
+            Un espacio preciso para limpiar, editar y comprobar JSON sin enviar
+            información a ningún servidor.
+          </p>
+          <ul class="hero__signals" role="list" aria-label="Características principales">
+            <li><span aria-hidden="true"></span> Sintaxis en tiempo real</li>
+            <li><span aria-hidden="true"></span> Cero transferencias</li>
+            <li><span aria-hidden="true"></span> Formato reversible</li>
+          </ul>
+        </div>
+      </section>
+
+      <JsonWorkbench />
+
+      <section class="process" aria-labelledby="process-title">
+        <div class="process__intro">
+          <p class="kicker"><span>FLUJO / 03</span> SIN PASOS OCULTOS</p>
+          <h2 id="process-title">Un documento.<br />Tres estados.</h2>
+        </div>
+
+        <ol class="process__steps" role="list">
+          <li>
+            <span class="process__number">01</span>
+            <div>
+              <h3>Interpreta</h3>
+              <p>Recibe JSON directo o serializado con comillas y caracteres escapados.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__number">02</span>
+            <div>
+              <h3>Trabaja</h3>
+              <p>Embellece, modifica y encuentra errores con una ubicación exacta.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__number">03</span>
+            <div>
+              <h3>Entrega</h3>
+              <p>Compacta el resultado y conviértelo de nuevo en un string portable.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>JSON//FORGE <span>·</span> Herramienta local para datos estructurados</p>
+      <p class="site-footer__tech">ASTRO + TYPESCRIPT / 2026</p>
+    </footer>
+  </body>
+</html>
